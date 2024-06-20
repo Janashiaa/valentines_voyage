@@ -1,0 +1,70 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.navbar {
+    background-color: #202040;
+    width: 100%;
+    height: 6%;
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: start;
+    border-bottom: 1px solid #323242;
+}
+
+.navbar_menu_button {
+    background-color: transparent;
+    width: 45px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 22px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.navbar_menu_button:hover {
+    background-color: #3d3d6c;
+    transition: ease 0.2s;
+}
+
+.menu_button_decoration_component_1 {
+    background-color: #F4F4FC;
+    width: 35px;
+    height: 4px;
+    border-radius: 10px;
+}
+
+.menu_button_decoration_component_2 {
+    background-color: transparent;
+    width: 35px;
+    height: 4px;
+}
+
+.signed_in_person_name {
+    font-size: x-large;
+    color: #F4F4FC;
+    margin-left: 30px;
+    user-select: none;
+}
+
+.workplace {
+    background-color: #191931;
+    width: 100%;
+    height: 94%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
