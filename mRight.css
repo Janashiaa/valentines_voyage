@@ -22,8 +22,8 @@
 .running_boy {
     background-color: red;
     width: 30px;
-    height: 30px;
-    border-radius: 50%;
+    height: 80px;
+    border-radius: 20px;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -111,6 +111,7 @@
     transition: ease 0.2s;
     user-select: none;
     cursor: pointer;
+    box-shadow: 0 0 15px rgba(208, 159, 29, 0.6);
 }
 
 .upgrade_backpack_button:hover,
@@ -138,9 +139,9 @@
 .magnet_shower_box,
 .luck_shower_box,
 .multiply_shower_box {
-    background-color: #D09F1D;
+    background-color: transparent;
     width: 40px;
-    height: 30px;
+    height: 28px;
     border-radius: 4px;
     margin-left: 10px;
     display: flex;
@@ -148,6 +149,7 @@
     justify-content: center;
     text-align: center;
     color: whitesmoke;
+    border: 1px solid #D09F1D;
     user-select: none;
 }
 
