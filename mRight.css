@@ -150,6 +150,7 @@
     text-align: center;
     color: whitesmoke;
     border: 1px solid #D09F1D;
+    box-shadow: 0 0 10px rgba(208, 159, 29, 0.6);
     user-select: none;
 }
 
@@ -157,4 +158,10 @@
     background-color: transparent;
     width: 80%;
     height: 15px;
+}
+
+.margin_component_208 {
+    background-color: transparent;
+    width: 20px;
+    height: 100%;
 }

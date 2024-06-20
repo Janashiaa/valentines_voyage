@@ -37,6 +37,7 @@
     border-radius: 8px;
     border: none;
     border: 1px solid #F061A4;
+    box-shadow: 0 0 10px rgba(240, 97, 164, 0.6);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -81,4 +82,5 @@
     height: 93%;
     border-radius: 8px;
     border: 1px solid #F061A4;
+    box-shadow: 0 0 10px rgba(240, 97, 164, 0.6);
 }
