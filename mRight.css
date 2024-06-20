@@ -15,6 +15,7 @@
     margin-top: 20px;
     border-radius: 8px;
     border: 1px solid #F061A4;
+    box-shadow: 0 0 10px rgba(240, 97, 164, 0.6);
     display: flex;
     position: relative;
 }
