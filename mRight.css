@@ -111,7 +111,7 @@
     transition: ease 0.2s;
     user-select: none;
     cursor: pointer;
-    box-shadow: 0 0 15px rgba(208, 159, 29, 0.6);
+    box-shadow: 0 0 6px rgba(208, 159, 29, 0.6);
 }
 
 .upgrade_backpack_button:hover,
@@ -150,7 +150,7 @@
     text-align: center;
     color: whitesmoke;
     border: 1px solid #D09F1D;
-    box-shadow: 0 0 10px rgba(208, 159, 29, 0.6);
+    box-shadow: 0 0 6px rgba(208, 159, 29, 0.6);
     user-select: none;
 }
 
