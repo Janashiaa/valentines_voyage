@@ -18,13 +18,15 @@
     box-shadow: 0 0 10px rgba(240, 97, 164, 0.6);
     display: flex;
     position: relative;
+    overflow: hidden;
 }
 
 .running_boy {
-    background-color: red;
-    width: 30px;
+    background-color: rgba(82, 226, 82, 0.161);
+    border: 1px solid rgba(8, 250, 8, 0.185);
+    width: 80px;
     height: 80px;
-    border-radius: 20px;
+    border-radius: 50%;
     position: absolute;
     bottom: 0;
     left: 0;
