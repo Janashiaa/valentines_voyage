@@ -61,7 +61,7 @@
 
 .statistic_aligner_container_upper {
     /* upper div of statistic                  here here here here here            that empty space */
-    background-color: transparent;
+    background-color: red;
     width: 100%;
     height: 20%;
 }

@@ -1,11 +1,10 @@
 const boy = document.querySelector(".running_boy");
 const platform = document.querySelector(".running_platform");
-let boyX = 0; // Initial X position
-let boyY = 0; // Initial Y position
-const step = 2; // Number of pixels to move per frame
-const keysPressed = {}; // Object to track pressed keys
+let boyX = 0; // X 
+let boyY = 0; // Y 
+const step = 2; // character speed
+const keysPressed = {};
 
-// Function to move the boy
 const moveBoy = () => {
     if (keysPressed["ArrowUp"] && boyY < platform.offsetHeight - boy.offsetHeight) {
         boyY += step;
@@ -23,14 +22,13 @@ const moveBoy = () => {
     boy.style.left = `${boyX}px`;
     boy.style.bottom = `${boyY}px`;
 
-    requestAnimationFrame(moveBoy); // Request next frame
+    requestAnimationFrame(moveBoy);
 };
 
-// Event listeners for keydown and keyup
 window.addEventListener("keydown", (event) => {
     keysPressed[event.key] = true;
     if (!requestId) {
-        requestId = requestAnimationFrame(moveBoy); // Start animation loop
+        requestId = requestAnimationFrame(moveBoy);
     }
 });
 
@@ -38,5 +36,4 @@ window.addEventListener("keyup", (event) => {
     keysPressed[event.key] = false;
 });
 
-// Start animation loop initially
 let requestId = requestAnimationFrame(moveBoy);
