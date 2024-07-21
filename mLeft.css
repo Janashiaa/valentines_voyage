@@ -52,6 +52,7 @@
 .gift_hearts_button:hover {
     background-color: rgb(75, 75, 126);
     transition: ease 0.2s;
+    scale: 1.03;
 }
 
 .leaderboard_main_backer {
