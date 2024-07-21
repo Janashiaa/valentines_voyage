@@ -54,7 +54,7 @@
                             <div class="upgrade_buttons_backer_left">
                                 <button class="upgrade_delay_button">Decrease Delay</button>
                                 <div class="margin_component_206"></div>
-                                <button class="upgrade_speed_button">Increase Goblin Speed</button>
+                                <button class="upgrade_speed_button" onclick="speedStore()">Increase Goblin Speed</button>
                                 <div class="margin_component_206"></div>
                                 <button class="upgrade_backpack_button">Upgrade Backpack</button>
                             </div>
@@ -85,6 +85,41 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="speed_store_popup_backer">
+        <div class="speed_store_popup">
+            <div class="speed_store_popup_upper">
+                <div class="speed_store_popup_header">Do you want to upgrade your goblin's speed?</div>
+                <div class="speed_store_popup_body">
+                    <div class="current_speed_backer">
+                        <div class="current_speed_backer_up">Current speed</div>
+                        <div class="current_speed_backer_down">
+                            <div class="current_speed_shower_for_upgrade"></div>
+                        </div>
+                    </div>
+                    <div class="current_speed_active_backer">
+                        <div class="speed_active_backer_up">
+                            <div class="speed_upgrade_cost_shower">
+                                <div class="speed_upgrade_cost_icon"></div>
+                                <div class="margin_component_304"></div>
+                                <div class="speed_upgrade_actual_cost">2</div>
+                            </div>
+                        </div>
+                        <div class="speed_active_backer_down"></div>
+                    </div>
+                    <div class="new_speed_backer">
+                        <div class="new_speed_backer_up">New speed</div>
+                        <div class="new_speed_backer_down">
+                            <div class="new_speed_shower_after_upgrade"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="speed_store_popup_lower">
+                <button class="calcel_speed_upgrade_button" onclick="speedUpgradeCancel()">Cancel</button>
+                <button class="confirm_speed_upgrade_button" onclick="speedUpgradeConfirm()">Confirm</button>
             </div>
         </div>
     </div>

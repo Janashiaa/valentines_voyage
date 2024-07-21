@@ -8,12 +8,13 @@ const keysPressed = {};
 
 let heartsOnPlatform = 0;
 
+const currentBalance = document.querySelector(".balance_shower").innerHTML;
 const delayRate = 20;
-const step = 2; // speed of boy
+const step = 3; // speed of boy
 const backpackSize = 20;
-const magnetRadius = 2;
-const luckyHeart = 10;
-const heartMultiplier = 1;
+const magnetRadius = 0;
+const luckyHeart = 0;
+const heartMultiplier = 0;
 
 function initiateStart() {
     document.querySelector(".start_button").style.display = "none";
@@ -126,4 +127,31 @@ function checkToMultiply() {
     } else if (heartMultiplier === 3 && heartsOnPlatform < 30) {
         createHeart();
     }
+}
+
+function speedStore() {
+    document.querySelector(".speed_store_popup_backer").style.display = "flex";
+
+    if (step == 6) {
+        document.querySelector(".current_speed_shower_for_upgrade").innerHTML = step;
+        document.querySelector(".new_speed_shower_after_upgrade").innerHTML = "MAX";
+    } else if (step < 6) {
+        document.querySelector(".current_speed_shower_for_upgrade").innerHTML = step;
+        document.querySelector(".new_speed_shower_after_upgrade").innerHTML = step + 1;
+    }
+
+    if (step == 1) {
+        document.querySelector(".speed_upgrade_actual_cost").innerHTML = "3";
+    } else if (step == 2) {
+        document.querySelector(".speed_upgrade_actual_cost").innerHTML = "6";
+    } else if (step == 3) {
+        document.querySelector(".speed_upgrade_actual_cost").innerHTML = "9";
+    } else if (step == 4) {
+        document.querySelector(".speed_upgrade_actual_cost").innerHTML = "12";
+    } else if (step == 5) {
+        document.querySelector(".speed_upgrade_actual_cost").innerHTML = "15";
+    }
+}
+function speedUpgradeCancel() {
+    document.querySelector(".speed_store_popup_backer").style.display = "none";
 }
