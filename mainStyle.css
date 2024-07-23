@@ -85,8 +85,8 @@ body {
 .running_boy {
     background-color: rgba(82, 226, 82, 0.161);
     border: 1px solid rgba(8, 250, 8, 0.185);
-    width: 60px;
-    height: 60px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     position: absolute;
     bottom: 0;
@@ -123,7 +123,8 @@ body {
 }
 
 .speed_store_popup_backer,
-.multiple_store_popup_backer {
+.multiple_store_popup_backer,
+.magnet_store_popup_backer {
     background-color: rgba(1, 1, 1, 0.463);
     width: 100%;
     height: 100%;
@@ -208,7 +209,9 @@ body {
 .current_speed_shower_for_upgrade,
 .new_speed_shower_after_upgrade,
 .current_multiple_shower_for_upgrade,
-.new_multiple_shower_after_upgrade {
+.new_multiple_shower_after_upgrade,
+.current_magnet_shower_for_upgrade,
+.new_magnet_shower_after_upgrade {
     background-color: #3d3d6c;
     width: 60px;
     height: 30px;
@@ -252,7 +255,8 @@ body {
 }
 
 .speed_upgrade_cost_shower,
-.multiple_upgrade_cost_shower {
+.multiple_upgrade_cost_shower,
+.magnet_upgrade_cost_shower {
     background-color: #3d3d6c;
     width: 80%;
     height: 35px;
@@ -273,7 +277,8 @@ body {
 }
 
 .speed_upgrade_actual_cost,
-.multiple_upgrade_actual_cost {
+.multiple_upgrade_actual_cost,
+.magnet_upgrade_actual_cost {
     background-color: transparent;
     width: fit-content;
     height: 100%;

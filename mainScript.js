@@ -10,11 +10,11 @@ let heartsOnPlatform = 0;
 
 let shownBalance = document.querySelector(".balance_shower");
 let delayRate = 20;
-let step = 1; // speed of boy
+let step = 6; // speed of boy
 let backpackSize = 20;
 let magnetRadius = 0;
 let luckyHeart = 0;
-let heartMultiplier = 0;
+let heartMultiplier = 5;
 
 function initiateStart() {
     document.querySelector(".start_button").style.display = "none";
@@ -198,7 +198,6 @@ function speedUpgradeConfirm() {
         speedUpgradeCancel();
         document.querySelector(".speed_shower_box").innerHTML = "6";
     }
-    // Repeat similar checks and updates for other speed levels if needed
 }
 
 
@@ -270,3 +269,61 @@ function multipleUpgradeConfirm() {
         multipleUpgradeCancel();
     }
 }
+
+
+function magnetStore() {
+    document.querySelector(".magnet_store_popup_backer").style.display = "flex";
+
+    if (magnetRadius < 3) {
+        document.querySelector(".current_magnet_shower_for_upgrade").innerHTML = magnetRadius;
+        document.querySelector(".new_magnet_shower_after_upgrade").innerHTML = magnetRadius + 1;
+    } else if (magnetRadius == 3) {
+        document.querySelector(".current_magnet_shower_for_upgrade").innerHTML = magnetRadius;
+        document.querySelector(".new_magnet_shower_after_upgrade").innerHTML = "MAX";
+    }
+
+    if (magnetRadius === 0) {
+        document.querySelector(".magnet_upgrade_actual_cost").innerHTML = "20";
+    } else if (magnetRadius === 1) {
+        document.querySelector(".magnet_upgrade_actual_cost").innerHTML = "40";
+    } else if (magnetRadius === 2) {
+        document.querySelector(".magnet_upgrade_actual_cost").innerHTML = "60";
+    } else if (magnetRadius === 3) {
+        document.querySelector(".magnet_upgrade_cost_shower").style.display = "none";
+    }
+}
+function magnetUpgradeCancel() {
+    document.querySelector(".magnet_store_popup_backer").style.display = "none";
+}
+function magnetUpgradeConfirm() {
+    let currentBalance = parseInt(shownBalance.innerHTML);
+
+    if (magnetRadius === 0 && currentBalance >= 20) {
+        document.querySelector(".running_boy").style.width = 40 + "px";
+        document.querySelector(".running_boy").style.height = 40 + "px";
+
+        magnetRadius++;
+        currentBalance -= 20;
+        shownBalance.innerHTML = currentBalance;
+        document.querySelector(".magnet_shower_box").innerHTML = magnetRadius;
+        magnetUpgradeCancel();
+    } else if (magnetRadius === 1 && currentBalance >=40) {
+        document.querySelector(".running_boy").style.width = 60 + "px";
+        document.querySelector(".running_boy").style.height = 60 + "px";
+        
+        magnetRadius++;
+        currentBalance -= 20;
+        shownBalance.innerHTML = currentBalance;
+        document.querySelector(".magnet_shower_box").innerHTML = magnetRadius;
+        magnetUpgradeCancel();
+    } else if (magnetRadius === 2 && currentBalance >=60) {
+        document.querySelector(".running_boy").style.width = 80 + "px";
+        document.querySelector(".running_boy").style.height = 80 + "px";
+        
+        magnetRadius++;
+        currentBalance -= 20;
+        shownBalance.innerHTML = currentBalance;
+        document.querySelector(".magnet_shower_box").innerHTML = magnetRadius;
+        magnetUpgradeCancel();
+    }
+} 
