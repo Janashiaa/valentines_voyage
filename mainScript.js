@@ -10,11 +10,11 @@ let heartsOnPlatform = 0;
 
 let shownBalance = document.querySelector(".balance_shower");
 let delayRate = 20;
-let step = 6; // speed of boy
+let step = 2; // speed of boy
 let backpackSize = 20;
 let magnetRadius = 0;
 let luckyHeart = 0;
-let heartMultiplier = 5;
+let heartMultiplier = 0;
 
 function initiateStart() {
     document.querySelector(".start_button").style.display = "none";
