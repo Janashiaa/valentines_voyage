@@ -8,13 +8,13 @@ const keysPressed = {};
 
 let heartsOnPlatform = 0;
 
-const currentBalance = document.querySelector(".balance_shower").innerHTML;
-const delayRate = 20;
-const step = 3; // speed of boy
-const backpackSize = 20;
-const magnetRadius = 0;
-const luckyHeart = 0;
-const heartMultiplier = 0;
+let shownBalance = document.querySelector(".balance_shower");
+let delayRate = 20;
+let step = 1; // speed of boy
+let backpackSize = 20;
+let magnetRadius = 0;
+let luckyHeart = 0;
+let heartMultiplier = 0;
 
 function initiateStart() {
     document.querySelector(".start_button").style.display = "none";
@@ -114,8 +114,6 @@ const createHeart = () => {
 let requestId = requestAnimationFrame(moveBoy);
 
 function addToBalance() {
-    let shownBalance = document.querySelector(".balance_shower");
-
     shownBalance.innerHTML++;
 }
 
@@ -125,6 +123,10 @@ function checkToMultiply() {
     } else if (heartMultiplier === 2 && heartsOnPlatform < 20) {
         createHeart();
     } else if (heartMultiplier === 3 && heartsOnPlatform < 30) {
+        createHeart();
+    } else if (heartMultiplier === 4 && heartsOnPlatform < 40) {
+        createHeart();
+    } else if (heartMultiplier === 5 && heartsOnPlatform < 50) {
         createHeart();
     }
 }
@@ -150,8 +152,121 @@ function speedStore() {
         document.querySelector(".speed_upgrade_actual_cost").innerHTML = "12";
     } else if (step == 5) {
         document.querySelector(".speed_upgrade_actual_cost").innerHTML = "15";
+    } else if (step == 6) {
+        document.querySelector(".speed_upgrade_cost_shower").style.display = "none";
     }
 }
 function speedUpgradeCancel() {
     document.querySelector(".speed_store_popup_backer").style.display = "none";
+}
+function speedUpgradeConfirm() {
+    let currentBalance = parseInt(shownBalance.innerHTML);
+
+    if (step == 1 && currentBalance >= 3) {
+        step++;
+        currentBalance -= 3;
+
+        shownBalance.innerHTML = currentBalance;
+        speedUpgradeCancel();
+        document.querySelector(".speed_shower_box").innerHTML = "2";
+    } else if (step == 2 && currentBalance >= 6) {
+        step++;
+        currentBalance -= 6;
+
+        shownBalance.innerHTML = currentBalance;
+        speedUpgradeCancel();
+        document.querySelector(".speed_shower_box").innerHTML = "3";
+    } else if (step == 3 && currentBalance >= 9) {
+        step++;
+        currentBalance -= 9;
+
+        shownBalance.innerHTML = currentBalance;
+        speedUpgradeCancel();
+        document.querySelector(".speed_shower_box").innerHTML = "4";
+    } else if (step == 4 && currentBalance >= 12) {
+        step++;
+        currentBalance -= 12;
+
+        shownBalance.innerHTML = currentBalance;
+        speedUpgradeCancel();
+        document.querySelector(".speed_shower_box").innerHTML = "5";
+    } else if (step == 5 && currentBalance >= 15) {
+        step++;
+        currentBalance -= 15;
+
+        shownBalance.innerHTML = currentBalance;
+        speedUpgradeCancel();
+        document.querySelector(".speed_shower_box").innerHTML = "6";
+    }
+    // Repeat similar checks and updates for other speed levels if needed
+}
+
+
+function multipleStore() {
+    document.querySelector(".multiple_store_popup_backer").style.display = "flex";
+
+    if (heartMultiplier < 5) {
+        document.querySelector(".current_multiple_shower_for_upgrade").innerHTML = heartMultiplier;
+        document.querySelector(".new_multiple_shower_after_upgrade").innerHTML = heartMultiplier + 1;
+    } else if (heartMultiplier === 5) {
+        document.querySelector(".current_multiple_shower_for_upgrade").innerHTML = heartMultiplier;
+        document.querySelector(".new_multiple_shower_after_upgrade").innerHTML = "MAX";
+    }
+
+    if (heartMultiplier === 0) {
+        document.querySelector(".multiple_upgrade_actual_cost").innerHTML = "10";
+    } else if (heartMultiplier === 1) {
+        document.querySelector(".multiple_upgrade_actual_cost").innerHTML = "20";
+    } else if (heartMultiplier === 2) {
+        document.querySelector(".multiple_upgrade_actual_cost").innerHTML = "30";
+    } else if (heartMultiplier === 3) {
+        document.querySelector(".multiple_upgrade_actual_cost").innerHTML = "40";
+    } else if (heartMultiplier === 4) {
+        document.querySelector(".multiple_upgrade_actual_cost").innerHTML = "50";
+    } else if (heartMultiplier === 5) {
+        document.querySelector(".multiple_upgrade_cost_shower").style.display = "none";
+    }
+}
+function multipleUpgradeCancel() {
+    document.querySelector(".multiple_store_popup_backer").style.display = "none";
+}
+function multipleUpgradeConfirm() {
+    let currentBalance = parseInt(shownBalance.innerHTML);
+
+    if (heartMultiplier === 0 && currentBalance >= 10) {
+        heartMultiplier++;
+        currentBalance -= 10;
+
+        shownBalance.innerHTML = currentBalance;
+        document.querySelector(".multiply_shower_box").innerHTML = heartMultiplier;
+        multipleUpgradeCancel();
+    } else if (heartMultiplier === 1 && currentBalance >= 20) {
+        heartMultiplier++;
+        currentBalance -= 20;
+
+        shownBalance.innerHTML = currentBalance;
+        document.querySelector(".multiply_shower_box").innerHTML = heartMultiplier;
+        multipleUpgradeCancel();
+    } else if (heartMultiplier === 2 && currentBalance >= 30) {
+        heartMultiplier++;
+        currentBalance -= 30;
+
+        shownBalance.innerHTML = currentBalance;
+        document.querySelector(".multiply_shower_box").innerHTML = heartMultiplier;
+        multipleUpgradeCancel();
+    } else if (heartMultiplier === 3 && currentBalance >= 40) {
+        heartMultiplier++;
+        currentBalance -= 40;
+
+        shownBalance.innerHTML = currentBalance;
+        document.querySelector(".multiply_shower_box").innerHTML = heartMultiplier;
+        multipleUpgradeCancel();
+    } else if (heartMultiplier === 4 && currentBalance >= 50) {
+        heartMultiplier++;
+        currentBalance -= 50;
+
+        shownBalance.innerHTML = currentBalance;
+        document.querySelector(".multiply_shower_box").innerHTML = heartMultiplier;
+        multipleUpgradeCancel();
+    }
 }
