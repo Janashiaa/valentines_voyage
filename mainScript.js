@@ -151,15 +151,15 @@ function addToBalance() {
 }
 
 function checkToMultiply() {
-    if (heartMultiplier === 1 && heartsOnPlatform < 10) {
+    if (heartMultiplier === 10 && heartsOnPlatform < 10) {
         createHeart();
-    } else if (heartMultiplier === 2 && heartsOnPlatform < 20) {
+    } else if (heartMultiplier === 20 && heartsOnPlatform < 20) {
         createHeart();
-    } else if (heartMultiplier === 3 && heartsOnPlatform < 30) {
+    } else if (heartMultiplier === 30 && heartsOnPlatform < 30) {
         createHeart();
-    } else if (heartMultiplier === 4 && heartsOnPlatform < 40) {
+    } else if (heartMultiplier === 40 && heartsOnPlatform < 40) {
         createHeart();
-    } else if (heartMultiplier === 5 && heartsOnPlatform < 50) {
+    } else if (heartMultiplier === 50 && heartsOnPlatform < 50) {
         createHeart();
     }
 }
@@ -187,7 +187,7 @@ function openSpeedStore() {
     if (step < 6) {
         document.querySelector(".current_rate_shower_for_upgrade").innerHTML = step;
         document.querySelector(".new_rate_shower_after_upgrade").innerHTML = step + 1;
-    } else if (step = 6) {
+    } else if (step == 6) {
         document.querySelector(".current_rate_shower_for_upgrade").innerHTML = step;
         document.querySelector(".new_rate_shower_after_upgrade").innerHTML = "MAX";
         document.querySelector(".upgrade_cost_backer").style.display = "none";
@@ -244,10 +244,10 @@ function openMultiplierStore() {
     document.querySelector(".current_rate_backer_up").innerHTML = "Current rate";
     document.querySelector(".new_rate_backer_up").innerHTML = "New rate";
 
-    if (heartMultiplier < 5) {
+    if (heartMultiplier < 50) {
         document.querySelector(".current_rate_shower_for_upgrade").innerHTML = heartMultiplier;
-        document.querySelector(".new_rate_shower_after_upgrade").innerHTML = heartMultiplier + 1;
-    } else if (step = 5) {
+        document.querySelector(".new_rate_shower_after_upgrade").innerHTML = heartMultiplier + 10;
+    } else if (heartMultiplier == 50) {
         document.querySelector(".current_rate_shower_for_upgrade").innerHTML = heartMultiplier;
         document.querySelector(".new_rate_shower_after_upgrade").innerHTML = "MAX";
         document.querySelector(".upgrade_cost_backer").style.display = "none";
@@ -255,39 +255,39 @@ function openMultiplierStore() {
 
     if (heartMultiplier == 0) {
         document.querySelector(".upgrade_actual_cost_shower").innerHTML = multiplierPriceTo1;
-    } else if (heartMultiplier == 1) {
+    } else if (heartMultiplier == 10) {
         document.querySelector(".upgrade_actual_cost_shower").innerHTML = multiplierPriceTo2;
-    } else if (heartMultiplier == 2) {
+    } else if (heartMultiplier == 20) {
         document.querySelector(".upgrade_actual_cost_shower").innerHTML = multiplierPriceTo3;
-    } else if (heartMultiplier == 3) {
+    } else if (heartMultiplier == 30) {
         document.querySelector(".upgrade_actual_cost_shower").innerHTML = multiplierPriceTo4;
-    } else if (heartMultiplier == 4) {
+    } else if (heartMultiplier == 40) {
         document.querySelector(".upgrade_actual_cost_shower").innerHTML = multiplierPriceTo5;
     }
 }
 function multipleConfirm() {
     if (heartMultiplier == 0 && currentBalance >= multiplierPriceTo1) {
-        heartMultiplier++;
+        heartMultiplier += 10;
         document.querySelector(".multiply_shower_box").innerHTML = heartMultiplier;
         currentBalance -= multiplierPriceTo1;
         storeCancel();
-    } else if (heartMultiplier == 1 && currentBalance >= multiplierPriceTo2) {
-        heartMultiplier++;
+    } else if (heartMultiplier == 10 && currentBalance >= multiplierPriceTo2) {
+        heartMultiplier += 10;
         document.querySelector(".multiply_shower_box").innerHTML = heartMultiplier;
         currentBalance -= multiplierPriceTo2;
         storeCancel();
-    } else if (heartMultiplier == 2 && currentBalance >= multiplierPriceTo3) {
-        heartMultiplier++;
+    } else if (heartMultiplier == 20 && currentBalance >= multiplierPriceTo3) {
+        heartMultiplier += 10;
         document.querySelector(".multiply_shower_box").innerHTML = heartMultiplier;
         currentBalance -= multiplierPriceTo3;
         storeCancel();
-    } else if (heartMultiplier == 3 && currentBalance >= multiplierPriceTo4) {
-        heartMultiplier++;
+    } else if (heartMultiplier == 30 && currentBalance >= multiplierPriceTo4) {
+        heartMultiplier += 10;
         document.querySelector(".multiply_shower_box").innerHTML = heartMultiplier;
         currentBalance -= multiplierPriceTo4;
         storeCancel();
-    } else if (heartMultiplier == 4 && currentBalance >= multiplierPriceTo5) {
-        heartMultiplier++;
+    } else if (heartMultiplier == 40 && currentBalance >= multiplierPriceTo5) {
+        heartMultiplier += 10;
         document.querySelector(".multiply_shower_box").innerHTML = heartMultiplier;
         currentBalance -= multiplierPriceTo5;
         storeCancel();
@@ -344,4 +344,5 @@ function magnetConfirm() {
         document.querySelector(".magnet_shower_box").innerHTML = magnetRadius;
         storeCancel();
     }
+    document.querySelector(".balance_shower").innerHTML = currentBalance;
 }
