@@ -11,7 +11,7 @@ let heartsOnPlatform = 0;
 let storeOpened = false;
 let currentBalance = 0;
 let delayRate = 20;
-let step = 1; // speed of boy
+let step = 6; // speed of boy
 let backpackSize = 20;
 let magnetRadius = 0;
 let luckyHeart = 0;
@@ -24,6 +24,20 @@ const speedPriceTo3 = 6;
 const speedPriceTo4 = 9;
 const speedPriceTo5 = 12;
 const speedPriceTo6 = 15;
+
+const backpackPriceTo40 = 10;
+const backpackPriceTo60 = 30;
+const backpackPriceTo80 = 50;
+const backpackPriceTo100 = 70;
+const backpackPriceTo120 = 90;
+
+const magnetPriceTo20 = 20;
+const magnetPriceTo40 = 40;
+const magnetPriceTo60 = 60;
+
+const luckPriceTo1 = 30;
+const luckPriceTo2 = 60;
+const luckPriceTo3 = 90;
 
 const multiplierPriceTo1 = 10;
 const multiplierPriceTo2 = 20;
@@ -166,7 +180,7 @@ function openSpeedStore() {
 
     document.querySelector(".store_popup_backer_screen").style.display = "flex";
     document.querySelector(".speed_button_id").style.display = "flex";
-    document.querySelector(".store_popup_offer_text").innerHTML = "Do you want to upgrade your speed?";
+    document.querySelector(".store_popup_offer_text").innerHTML = "Do you want to upgrade goblin's speed?";
     document.querySelector(".current_rate_backer_up").innerHTML = "Current speed";
     document.querySelector(".new_rate_backer_up").innerHTML = "New speed";
 
@@ -279,4 +293,55 @@ function multipleConfirm() {
         storeCancel();
     }
     document.querySelector(".balance_shower").innerHTML = currentBalance;
+}
+
+function openMagnetStore() {
+    storeOpened = true;
+
+    document.querySelector(".store_popup_backer_screen").style.display = "flex";
+    document.querySelector(".magnet_button_id").style.display = "flex";
+    document.querySelector(".store_popup_offer_text").innerHTML = "Do you want to upgrade goblin's magnet radius?";
+    document.querySelector(".current_rate_backer_up").innerHTML = "Current radius";
+    document.querySelector(".new_rate_backer_up").innerHTML = "New radius";
+
+    if (magnetRadius < 60) {
+        document.querySelector(".current_rate_shower_for_upgrade").innerHTML = magnetRadius;
+        document.querySelector(".new_rate_shower_after_upgrade").innerHTML = magnetRadius + 20;
+    } else if (magnetRadius == 60) {
+        document.querySelector(".current_rate_shower_for_upgrade").innerHTML = magnetRadius;
+        document.querySelector(".new_rate_shower_after_upgrade").innerHTML = "MAX";
+        document.querySelector(".upgrade_cost_backer").style.display = "none";
+    }
+
+    if (magnetRadius == 0) {
+        document.querySelector(".upgrade_actual_cost_shower").innerHTML = magnetPriceTo20;
+    } else if (magnetRadius == 20) {
+        document.querySelector(".upgrade_actual_cost_shower").innerHTML = magnetPriceTo40;
+    } else if (magnetRadius == 40) {
+        document.querySelector(".upgrade_actual_cost_shower").innerHTML = magnetPriceTo60;
+    }
+}
+function magnetConfirm() {
+    if (magnetRadius == 0 && currentBalance >= magnetPriceTo20) {
+        magnetRadius += 20;
+        currentBalance -= magnetPriceTo20;
+        document.querySelector(".running_boy").style.width = "50px";
+        document.querySelector(".running_boy").style.height = "50px";
+        document.querySelector(".magnet_shower_box").innerHTML = magnetRadius;
+        storeCancel();
+    } else if (magnetRadius == 20 && currentBalance >= magnetPriceTo40) {
+        magnetRadius += 20;
+        currentBalance -= magnetPriceTo40;
+        document.querySelector(".running_boy").style.width = "60px";
+        document.querySelector(".running_boy").style.height = "60px";
+        document.querySelector(".magnet_shower_box").innerHTML = magnetRadius;
+        storeCancel();
+    } else if (magnetRadius == 40 && currentBalance >= magnetPriceTo60) {
+        magnetRadius += 20;
+        currentBalance -= magnetPriceTo60;
+        document.querySelector(".running_boy").style.width = "70px";
+        document.querySelector(".running_boy").style.height = "70px";
+        document.querySelector(".magnet_shower_box").innerHTML = magnetRadius;
+        storeCancel();
+    }
 }
