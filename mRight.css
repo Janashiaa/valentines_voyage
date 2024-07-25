@@ -192,3 +192,215 @@
     width: 20px;
     height: 100%;
 }
+
+.store_popup_backer_screen {
+    background-color: rgba(1, 1, 1, 0.463);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.store_popup_main_card {
+    background-color: #3d3d6c;
+    width: 350px;
+    height: 250px;
+    border-radius: 20px;
+    border: 2px solid #191931;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.store_popup_main_card_upper {
+    background-color: transparent;
+    width: 100%;
+    height: 70%;
+    border-radius: 20px 20px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.store_popup_offer_text {
+    background-color: transparent;
+    width: 100%;
+    height: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: whitesmoke;
+    user-select: none;
+}
+
+.store_popup_body {
+    background-color: transparent;
+    width: 100%;
+    height: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: row;
+}
+
+.current_rate_backer,
+.new_rate_backer {
+    background-color: transparent;
+    width: 28%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.current_rate_backer_up,
+.current_rate_backer_down,
+.new_rate_backer_up,
+.new_rate_backer_down {
+    background-color: transparent;
+    width: 100%;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: small;
+    color: whitesmoke;
+    user-select: none;
+}
+
+.current_rate_shower_for_upgrade,
+.new_rate_shower_after_upgrade {
+    background-color: #3d3d6c;
+    width: 60px;
+    height: 30px;
+    border-radius: 10px;
+    border: 1px solid #F061A4;
+    box-shadow: 0 0 10px rgba(240, 97, 164, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: small;
+    color: whitesmoke;
+    user-select: none;
+}
+
+.current_rate_middle_backer {
+    background-color: transparent;
+    width: 32%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.middle_backer_up,
+.middle_backer_down {
+    background-color: transparent;
+    height: 35px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.middle_backer_down {
+    background-image: url(./photoes/arrow_cutout.png);
+    background-position: center;
+    background-size: 100%, 100%;
+    background-repeat: no-repeat;
+}
+
+.upgrade_cost_backer {
+    background-color: #3d3d6c;
+    width: 80%;
+    height: 35px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.upgrade_cost_icon {
+    background-color: transparent;
+    width: 25px;
+    height: 25px;
+    background-image: url(./photoes/heart.png);
+    background-position: center;
+    background-size: 100%, 100%;
+    background-repeat: no-repeat;
+}
+
+.margin_component_304 {
+    background-color: transparent;
+    height: 100%;
+    width: 5px;
+}
+
+.upgrade_actual_cost_shower {
+    background-color: transparent;
+    width: fit-content;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    text-align: center;
+    color: whitesmoke;
+    user-select: none;
+}
+
+.store_popup_main_card_lower {
+    background-color: transparent;
+    width: 100%;
+    height: 30%;
+    border-radius: 0 0 20px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: row;
+}
+
+.store_cancel_button,
+#store_confirm_button {
+    background-color: whitesmoke;
+    width: 100px;
+    height: 30px;
+    border-radius: 20px;
+    border: none;
+    font-family: 'Times New Roman', Times, serif;
+    color: whitesmoke;
+    cursor: pointer;
+    user-select: none;
+}
+
+#store_confirm_button {
+    background-color: rgb(16, 116, 16);
+}
+
+.store_cancel_button {
+    background-color: rgb(212, 25, 25);
+}
+
+.store_cancel_button:hover,
+#store_confirm_button:hover {
+    scale: 1.05;
+}
+
+.speed_button_id,
+.backpack_button_id,
+.magnet_button_id,
+.lucky_button_id,
+.multiplier_button_id {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}

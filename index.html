@@ -54,7 +54,8 @@
                             <div class="upgrade_buttons_backer_left">
                                 <button class="upgrade_delay_button">Decrease Delay</button>
                                 <div class="margin_component_206"></div>
-                                <button class="upgrade_speed_button" onclick="speedStore()">Increase Goblin Speed</button>
+                                <button class="upgrade_speed_button" onclick="openSpeedStore()">Increase Goblin
+                                    Speed</button>
                                 <div class="margin_component_206"></div>
                                 <button class="upgrade_backpack_button">Upgrade Backpack</button>
                             </div>
@@ -73,7 +74,8 @@
                                 <div class="margin_component_206"></div>
                                 <button class="upgrade_lucky_button">Lucky Hearts</button>
                                 <div class="margin_component_206"></div>
-                                <button class="upgrade_multiple_button" onclick="multipleStore()">Heart Multiplier</button>
+                                <button class="upgrade_multiple_button" onclick="openMultiplierStore()">Heart
+                                    Multiplier</button>
                             </div>
                             <div class="upgrade_buttons_backer_right">
                                 <div class="magnet_shower_box"></div>
@@ -88,108 +90,42 @@
             </div>
         </div>
     </div>
-    <div class="speed_store_popup_backer">
-        <div class="speed_store_popup">
-            <div class="speed_store_popup_upper">
-                <div class="speed_store_popup_header">Do you want to upgrade your goblin's speed?</div>
-                <div class="speed_store_popup_body">
-                    <div class="current_speed_backer">
-                        <div class="current_speed_backer_up">Current speed</div>
-                        <div class="current_speed_backer_down">
-                            <div class="current_speed_shower_for_upgrade"></div>
+    <div class="store_popup_backer_screen">
+        <div class="store_popup_main_card">
+            <div class="store_popup_main_card_upper">
+                <div class="store_popup_offer_text"></div>
+                <div class="store_popup_body">
+                    <div class="current_rate_backer">
+                        <div class="current_rate_backer_up"></div>
+                        <div class="current_rate_backer_down">
+                            <div class="current_rate_shower_for_upgrade"></div>
                         </div>
                     </div>
-                    <div class="current_speed_active_backer">
-                        <div class="speed_active_backer_up">
-                            <div class="speed_upgrade_cost_shower">
-                                <div class="speed_upgrade_cost_icon"></div>
+                    <div class="current_rate_middle_backer">
+                        <div class="middle_backer_up">
+                            <div class="upgrade_cost_backer">
+                                <div class="upgrade_cost_icon"></div>
                                 <div class="margin_component_304"></div>
-                                <div class="speed_upgrade_actual_cost"></div>
+                                <div class="upgrade_actual_cost_shower"></div>
                             </div>
                         </div>
-                        <div class="speed_active_backer_down"></div>
+                        <div class="middle_backer_down"></div>
                     </div>
-                    <div class="new_speed_backer">
-                        <div class="new_speed_backer_up">New speed</div>
-                        <div class="new_speed_backer_down">
-                            <div class="new_speed_shower_after_upgrade"></div>
+                    <div class="new_rate_backer">
+                        <div class="new_rate_backer_up"></div>
+                        <div class="new_rate_backer_down">
+                            <div class="new_rate_shower_after_upgrade"></div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="speed_store_popup_lower">
-                <button class="calcel_speed_upgrade_button" onclick="speedUpgradeCancel()">Cancel</button>
-                <button class="confirm_speed_upgrade_button" onclick="speedUpgradeConfirm()">Confirm</button>
-            </div>
-        </div>
-    </div>
-    <div class="multiple_store_popup_backer">
-        <div class="speed_store_popup">
-            <div class="speed_store_popup_upper">
-                <div class="speed_store_popup_header">Do you want to upgrade heart multiplier?</div>
-                <div class="speed_store_popup_body">
-                    <div class="current_speed_backer">
-                        <div class="current_speed_backer_up">Current rate</div>
-                        <div class="current_speed_backer_down">
-                            <div class="current_multiple_shower_for_upgrade"></div>
-                        </div>
-                    </div>
-                    <div class="current_speed_active_backer">
-                        <div class="speed_active_backer_up">
-                            <div class="multiple_upgrade_cost_shower">
-                                <div class="speed_upgrade_cost_icon"></div>
-                                <div class="margin_component_304"></div>
-                                <div class="multiple_upgrade_actual_cost"></div>
-                            </div>
-                        </div>
-                        <div class="speed_active_backer_down"></div>
-                    </div>
-                    <div class="new_speed_backer">
-                        <div class="new_speed_backer_up">New rate</div>
-                        <div class="new_speed_backer_down">
-                            <div class="new_multiple_shower_after_upgrade"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="speed_store_popup_lower">
-                <button class="calcel_speed_upgrade_button" onclick="multipleUpgradeCancel()">Cancel</button>
-                <button class="confirm_speed_upgrade_button" onclick="multipleUpgradeConfirm()">Confirm</button>
-            </div>
-        </div>
-    </div>
-    <div class="magnet_store_popup_backer">
-        <div class="speed_store_popup">
-            <div class="speed_store_popup_upper">
-                <div class="speed_store_popup_header">Do you want to upgrade goblin's magnet radius?</div>
-                <div class="speed_store_popup_body">
-                    <div class="current_speed_backer">
-                        <div class="current_speed_backer_up">Current level</div>
-                        <div class="current_speed_backer_down">
-                            <div class="current_magnet_shower_for_upgrade"></div>
-                        </div>
-                    </div>
-                    <div class="current_speed_active_backer">
-                        <div class="speed_active_backer_up">
-                            <div class="magnet_upgrade_cost_shower">
-                                <div class="speed_upgrade_cost_icon"></div>
-                                <div class="margin_component_304"></div>
-                                <div class="magnet_upgrade_actual_cost"></div>
-                            </div>
-                        </div>
-                        <div class="speed_active_backer_down"></div>
-                    </div>
-                    <div class="new_speed_backer">
-                        <div class="new_speed_backer_up">New level</div>
-                        <div class="new_speed_backer_down">
-                            <div class="new_magnet_shower_after_upgrade"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="speed_store_popup_lower">
-                <button class="calcel_speed_upgrade_button" onclick="magnetUpgradeCancel()">Cancel</button>
-                <button class="confirm_speed_upgrade_button" onclick="magnetUpgradeConfirm()">Confirm</button>
+            <div class="store_popup_main_card_lower">
+                <button class="store_cancel_button" onclick="storeCancel()">Cancel</button>
+                <button id="store_confirm_button" class="speed_button_id" onclick="speedConfirm()">Confirm S</button>
+                <button id="store_confirm_button" class="backpack_button_id">Confirm B</button>
+                <button id="store_confirm_button" class="magnet_button_id">Confirm M</button>
+                <button id="store_confirm_button" class="lucky_button_id">Confirm L</button>
+                <button id="store_confirm_button" class="multiplier_button_id" onclick="multipleConfirm()">Confirm Mu</button>
             </div>
         </div>
     </div>

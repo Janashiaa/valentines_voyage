@@ -8,13 +8,30 @@ const keysPressed = {};
 
 let heartsOnPlatform = 0;
 
-let shownBalance = document.querySelector(".balance_shower");
+let storeOpened = false;
+let currentBalance = 0;
 let delayRate = 20;
-let step = 2; // speed of boy
+let step = 1; // speed of boy
 let backpackSize = 20;
 let magnetRadius = 0;
 let luckyHeart = 0;
 let heartMultiplier = 0;
+
+// pricing start
+
+const speedPriceTo2 = 3;
+const speedPriceTo3 = 6;
+const speedPriceTo4 = 9;
+const speedPriceTo5 = 12;
+const speedPriceTo6 = 15;
+
+const multiplierPriceTo1 = 10;
+const multiplierPriceTo2 = 20;
+const multiplierPriceTo3 = 30;
+const multiplierPriceTo4 = 40;
+const multiplierPriceTo5 = 50;
+
+// pricing end
 
 function initiateStart() {
     document.querySelector(".start_button").style.display = "none";
@@ -38,18 +55,21 @@ function initiateStart() {
 }
 
 const moveBoy = () => {
-    if ((keysPressed["ArrowDown"] || keysPressed["KeyS"]) && boyY > 0) {
-        boyY -= step;
+    if (storeOpened == false) {
+        if ((keysPressed["ArrowDown"] || keysPressed["KeyS"]) && boyY > 0) {
+            boyY -= step;
+        }
+        if ((keysPressed["ArrowUp"] || keysPressed["KeyW"]) && boyY < platform.offsetHeight - boy.offsetHeight) {
+            boyY += step;
+        }
+        if ((keysPressed["ArrowLeft"] || keysPressed["KeyA"]) && boyX > 0) {
+            boyX -= step;
+        }
+        if ((keysPressed["ArrowRight"] || keysPressed["KeyD"]) && boyX < platform.offsetWidth - boy.offsetWidth) {
+            boyX += step;
+        }
     }
-    if ((keysPressed["ArrowUp"] || keysPressed["KeyW"]) && boyY < platform.offsetHeight - boy.offsetHeight) {
-        boyY += step;
-    }
-    if ((keysPressed["ArrowLeft"] || keysPressed["KeyA"]) && boyX > 0) {
-        boyX -= step;
-    }
-    if ((keysPressed["ArrowRight"] || keysPressed["KeyD"]) && boyX < platform.offsetWidth - boy.offsetWidth) {
-        boyX += step;
-    }
+
 
     // Update boy's position
     boy.style.left = `${boyX}px`;
@@ -60,9 +80,7 @@ const moveBoy = () => {
     hearts.forEach((heart) => {
         if (checkCollision(boy, heart)) {
             platform.removeChild(heart);
-            // createHeart();
 
-            // Add score or other actions on collision
             heartsOnPlatform--;
             delayShower.innerHTML = heartsOnPlatform;
             createHeart();
@@ -101,7 +119,7 @@ const checkCollision = (boy, heart) => {
 const createHeart = () => {
     const heart = document.createElement('div');
     heart.className = 'heart';
-    const heartSize = 30; // Assuming heart is 20x20 pixels
+    const heartSize = 30;
     const maxLeft = platform.offsetWidth - heartSize;
     const maxTop = platform.offsetHeight - heartSize;
     heart.style.left = `${Math.random() * maxLeft}px`;
@@ -114,7 +132,8 @@ const createHeart = () => {
 let requestId = requestAnimationFrame(moveBoy);
 
 function addToBalance() {
-    shownBalance.innerHTML++;
+    currentBalance++;
+    document.querySelector(".balance_shower").innerHTML = currentBalance;
 }
 
 function checkToMultiply() {
@@ -131,199 +150,133 @@ function checkToMultiply() {
     }
 }
 
-function speedStore() {
-    document.querySelector(".speed_store_popup_backer").style.display = "flex";
+function storeCancel() {
+    storeOpened = false;
 
-    if (step == 6) {
-        document.querySelector(".current_speed_shower_for_upgrade").innerHTML = step;
-        document.querySelector(".new_speed_shower_after_upgrade").innerHTML = "MAX";
-    } else if (step < 6) {
-        document.querySelector(".current_speed_shower_for_upgrade").innerHTML = step;
-        document.querySelector(".new_speed_shower_after_upgrade").innerHTML = step + 1;
+    document.querySelector(".speed_button_id").style.display = "none";
+    document.querySelector(".backpack_button_id").style.display = "none";
+    document.querySelector(".magnet_button_id").style.display = "none";
+    document.querySelector(".lucky_button_id").style.display = "none";
+    document.querySelector(".multiplier_button_id").style.display = "none";
+    document.querySelector(".store_popup_backer_screen").style.display = "none";
+}
+
+function openSpeedStore() {
+    storeOpened = true;
+
+    document.querySelector(".store_popup_backer_screen").style.display = "flex";
+    document.querySelector(".speed_button_id").style.display = "flex";
+    document.querySelector(".store_popup_offer_text").innerHTML = "Do you want to upgrade your speed?";
+    document.querySelector(".current_rate_backer_up").innerHTML = "Current speed";
+    document.querySelector(".new_rate_backer_up").innerHTML = "New speed";
+
+    if (step < 6) {
+        document.querySelector(".current_rate_shower_for_upgrade").innerHTML = step;
+        document.querySelector(".new_rate_shower_after_upgrade").innerHTML = step + 1;
+    } else if (step = 6) {
+        document.querySelector(".current_rate_shower_for_upgrade").innerHTML = step;
+        document.querySelector(".new_rate_shower_after_upgrade").innerHTML = "MAX";
+        document.querySelector(".upgrade_cost_backer").style.display = "none";
     }
 
     if (step == 1) {
-        document.querySelector(".speed_upgrade_actual_cost").innerHTML = "3";
+        document.querySelector(".upgrade_actual_cost_shower").innerHTML = speedPriceTo2;
     } else if (step == 2) {
-        document.querySelector(".speed_upgrade_actual_cost").innerHTML = "6";
+        document.querySelector(".upgrade_actual_cost_shower").innerHTML = speedPriceTo3;
     } else if (step == 3) {
-        document.querySelector(".speed_upgrade_actual_cost").innerHTML = "9";
+        document.querySelector(".upgrade_actual_cost_shower").innerHTML = speedPriceTo4;
     } else if (step == 4) {
-        document.querySelector(".speed_upgrade_actual_cost").innerHTML = "12";
+        document.querySelector(".upgrade_actual_cost_shower").innerHTML = speedPriceTo5;
     } else if (step == 5) {
-        document.querySelector(".speed_upgrade_actual_cost").innerHTML = "15";
-    } else if (step == 6) {
-        document.querySelector(".speed_upgrade_cost_shower").style.display = "none";
+        document.querySelector(".upgrade_actual_cost_shower").innerHTML = speedPriceTo6;
     }
 }
-function speedUpgradeCancel() {
-    document.querySelector(".speed_store_popup_backer").style.display = "none";
-}
-function speedUpgradeConfirm() {
-    let currentBalance = parseInt(shownBalance.innerHTML);
-
-    if (step == 1 && currentBalance >= 3) {
-        step++;
-        currentBalance -= 3;
-
-        shownBalance.innerHTML = currentBalance;
-        speedUpgradeCancel();
-        document.querySelector(".speed_shower_box").innerHTML = "2";
-    } else if (step == 2 && currentBalance >= 6) {
-        step++;
-        currentBalance -= 6;
-
-        shownBalance.innerHTML = currentBalance;
-        speedUpgradeCancel();
-        document.querySelector(".speed_shower_box").innerHTML = "3";
-    } else if (step == 3 && currentBalance >= 9) {
-        step++;
-        currentBalance -= 9;
-
-        shownBalance.innerHTML = currentBalance;
-        speedUpgradeCancel();
-        document.querySelector(".speed_shower_box").innerHTML = "4";
-    } else if (step == 4 && currentBalance >= 12) {
-        step++;
-        currentBalance -= 12;
-
-        shownBalance.innerHTML = currentBalance;
-        speedUpgradeCancel();
-        document.querySelector(".speed_shower_box").innerHTML = "5";
-    } else if (step == 5 && currentBalance >= 15) {
-        step++;
-        currentBalance -= 15;
-
-        shownBalance.innerHTML = currentBalance;
-        speedUpgradeCancel();
-        document.querySelector(".speed_shower_box").innerHTML = "6";
+function speedConfirm() {
+    if (step == 1 && currentBalance >= speedPriceTo2) {
+        step++
+        document.querySelector(".speed_shower_box").innerHTML = step;
+        currentBalance -= speedPriceTo2;
+        storeCancel();
+    } else if (step == 2 && currentBalance >= speedPriceTo3) {
+        step++
+        document.querySelector(".speed_shower_box").innerHTML = step;
+        currentBalance -= speedPriceTo3;
+        storeCancel();
+    } else if (step == 3 && currentBalance >= speedPriceTo4) {
+        step++
+        document.querySelector(".speed_shower_box").innerHTML = step;
+        currentBalance -= speedPriceTo4;
+        storeCancel();
+    } else if (step == 4 && currentBalance >= speedPriceTo5) {
+        step++
+        document.querySelector(".speed_shower_box").innerHTML = step;
+        currentBalance -= speedPriceTo5;
+        storeCancel();
+    } else if (step == 5 && currentBalance >= speedPriceTo6) {
+        step++
+        document.querySelector(".speed_shower_box").innerHTML = step;
+        currentBalance -= speedPriceTo6;
+        storeCancel();
     }
+    document.querySelector(".balance_shower").innerHTML = currentBalance;
 }
 
+function openMultiplierStore() {
+    storeOpened = true;
 
-function multipleStore() {
-    document.querySelector(".multiple_store_popup_backer").style.display = "flex";
+    document.querySelector(".store_popup_backer_screen").style.display = "flex";
+    document.querySelector(".multiplier_button_id").style.display = "flex";
+    document.querySelector(".store_popup_offer_text").innerHTML = "Do you want to upgrade multiplication rate?";
+    document.querySelector(".current_rate_backer_up").innerHTML = "Current rate";
+    document.querySelector(".new_rate_backer_up").innerHTML = "New rate";
 
     if (heartMultiplier < 5) {
-        document.querySelector(".current_multiple_shower_for_upgrade").innerHTML = heartMultiplier;
-        document.querySelector(".new_multiple_shower_after_upgrade").innerHTML = heartMultiplier + 1;
-    } else if (heartMultiplier === 5) {
-        document.querySelector(".current_multiple_shower_for_upgrade").innerHTML = heartMultiplier;
-        document.querySelector(".new_multiple_shower_after_upgrade").innerHTML = "MAX";
+        document.querySelector(".current_rate_shower_for_upgrade").innerHTML = heartMultiplier;
+        document.querySelector(".new_rate_shower_after_upgrade").innerHTML = heartMultiplier + 1;
+    } else if (step = 5) {
+        document.querySelector(".current_rate_shower_for_upgrade").innerHTML = heartMultiplier;
+        document.querySelector(".new_rate_shower_after_upgrade").innerHTML = "MAX";
+        document.querySelector(".upgrade_cost_backer").style.display = "none";
     }
 
-    if (heartMultiplier === 0) {
-        document.querySelector(".multiple_upgrade_actual_cost").innerHTML = "10";
-    } else if (heartMultiplier === 1) {
-        document.querySelector(".multiple_upgrade_actual_cost").innerHTML = "20";
-    } else if (heartMultiplier === 2) {
-        document.querySelector(".multiple_upgrade_actual_cost").innerHTML = "30";
-    } else if (heartMultiplier === 3) {
-        document.querySelector(".multiple_upgrade_actual_cost").innerHTML = "40";
-    } else if (heartMultiplier === 4) {
-        document.querySelector(".multiple_upgrade_actual_cost").innerHTML = "50";
-    } else if (heartMultiplier === 5) {
-        document.querySelector(".multiple_upgrade_cost_shower").style.display = "none";
-    }
-}
-function multipleUpgradeCancel() {
-    document.querySelector(".multiple_store_popup_backer").style.display = "none";
-}
-function multipleUpgradeConfirm() {
-    let currentBalance = parseInt(shownBalance.innerHTML);
-
-    if (heartMultiplier === 0 && currentBalance >= 10) {
-        heartMultiplier++;
-        currentBalance -= 10;
-
-        shownBalance.innerHTML = currentBalance;
-        document.querySelector(".multiply_shower_box").innerHTML = heartMultiplier;
-        multipleUpgradeCancel();
-    } else if (heartMultiplier === 1 && currentBalance >= 20) {
-        heartMultiplier++;
-        currentBalance -= 20;
-
-        shownBalance.innerHTML = currentBalance;
-        document.querySelector(".multiply_shower_box").innerHTML = heartMultiplier;
-        multipleUpgradeCancel();
-    } else if (heartMultiplier === 2 && currentBalance >= 30) {
-        heartMultiplier++;
-        currentBalance -= 30;
-
-        shownBalance.innerHTML = currentBalance;
-        document.querySelector(".multiply_shower_box").innerHTML = heartMultiplier;
-        multipleUpgradeCancel();
-    } else if (heartMultiplier === 3 && currentBalance >= 40) {
-        heartMultiplier++;
-        currentBalance -= 40;
-
-        shownBalance.innerHTML = currentBalance;
-        document.querySelector(".multiply_shower_box").innerHTML = heartMultiplier;
-        multipleUpgradeCancel();
-    } else if (heartMultiplier === 4 && currentBalance >= 50) {
-        heartMultiplier++;
-        currentBalance -= 50;
-
-        shownBalance.innerHTML = currentBalance;
-        document.querySelector(".multiply_shower_box").innerHTML = heartMultiplier;
-        multipleUpgradeCancel();
+    if (heartMultiplier == 0) {
+        document.querySelector(".upgrade_actual_cost_shower").innerHTML = multiplierPriceTo1;
+    } else if (heartMultiplier == 1) {
+        document.querySelector(".upgrade_actual_cost_shower").innerHTML = multiplierPriceTo2;
+    } else if (heartMultiplier == 2) {
+        document.querySelector(".upgrade_actual_cost_shower").innerHTML = multiplierPriceTo3;
+    } else if (heartMultiplier == 3) {
+        document.querySelector(".upgrade_actual_cost_shower").innerHTML = multiplierPriceTo4;
+    } else if (heartMultiplier == 4) {
+        document.querySelector(".upgrade_actual_cost_shower").innerHTML = multiplierPriceTo5;
     }
 }
-
-
-function magnetStore() {
-    document.querySelector(".magnet_store_popup_backer").style.display = "flex";
-
-    if (magnetRadius < 3) {
-        document.querySelector(".current_magnet_shower_for_upgrade").innerHTML = magnetRadius;
-        document.querySelector(".new_magnet_shower_after_upgrade").innerHTML = magnetRadius + 1;
-    } else if (magnetRadius == 3) {
-        document.querySelector(".current_magnet_shower_for_upgrade").innerHTML = magnetRadius;
-        document.querySelector(".new_magnet_shower_after_upgrade").innerHTML = "MAX";
+function multipleConfirm() {
+    if (heartMultiplier == 0 && currentBalance >= multiplierPriceTo1) {
+        heartMultiplier++;
+        document.querySelector(".multiply_shower_box").innerHTML = heartMultiplier;
+        currentBalance -= multiplierPriceTo1;
+        storeCancel();
+    } else if (heartMultiplier == 1 && currentBalance >= multiplierPriceTo2) {
+        heartMultiplier++;
+        document.querySelector(".multiply_shower_box").innerHTML = heartMultiplier;
+        currentBalance -= multiplierPriceTo2;
+        storeCancel();
+    } else if (heartMultiplier == 2 && currentBalance >= multiplierPriceTo3) {
+        heartMultiplier++;
+        document.querySelector(".multiply_shower_box").innerHTML = heartMultiplier;
+        currentBalance -= multiplierPriceTo3;
+        storeCancel();
+    } else if (heartMultiplier == 3 && currentBalance >= multiplierPriceTo4) {
+        heartMultiplier++;
+        document.querySelector(".multiply_shower_box").innerHTML = heartMultiplier;
+        currentBalance -= multiplierPriceTo4;
+        storeCancel();
+    } else if (heartMultiplier == 4 && currentBalance >= multiplierPriceTo5) {
+        heartMultiplier++;
+        document.querySelector(".multiply_shower_box").innerHTML = heartMultiplier;
+        currentBalance -= multiplierPriceTo5;
+        storeCancel();
     }
-
-    if (magnetRadius === 0) {
-        document.querySelector(".magnet_upgrade_actual_cost").innerHTML = "20";
-    } else if (magnetRadius === 1) {
-        document.querySelector(".magnet_upgrade_actual_cost").innerHTML = "40";
-    } else if (magnetRadius === 2) {
-        document.querySelector(".magnet_upgrade_actual_cost").innerHTML = "60";
-    } else if (magnetRadius === 3) {
-        document.querySelector(".magnet_upgrade_cost_shower").style.display = "none";
-    }
+    document.querySelector(".balance_shower").innerHTML = currentBalance;
 }
-function magnetUpgradeCancel() {
-    document.querySelector(".magnet_store_popup_backer").style.display = "none";
-}
-function magnetUpgradeConfirm() {
-    let currentBalance = parseInt(shownBalance.innerHTML);
-
-    if (magnetRadius === 0 && currentBalance >= 20) {
-        document.querySelector(".running_boy").style.width = 40 + "px";
-        document.querySelector(".running_boy").style.height = 40 + "px";
-
-        magnetRadius++;
-        currentBalance -= 20;
-        shownBalance.innerHTML = currentBalance;
-        document.querySelector(".magnet_shower_box").innerHTML = magnetRadius;
-        magnetUpgradeCancel();
-    } else if (magnetRadius === 1 && currentBalance >=40) {
-        document.querySelector(".running_boy").style.width = 60 + "px";
-        document.querySelector(".running_boy").style.height = 60 + "px";
-        
-        magnetRadius++;
-        currentBalance -= 20;
-        shownBalance.innerHTML = currentBalance;
-        document.querySelector(".magnet_shower_box").innerHTML = magnetRadius;
-        magnetUpgradeCancel();
-    } else if (magnetRadius === 2 && currentBalance >=60) {
-        document.querySelector(".running_boy").style.width = 80 + "px";
-        document.querySelector(".running_boy").style.height = 80 + "px";
-        
-        magnetRadius++;
-        currentBalance -= 20;
-        shownBalance.innerHTML = currentBalance;
-        document.querySelector(".magnet_shower_box").innerHTML = magnetRadius;
-        magnetUpgradeCancel();
-    }
-} 
